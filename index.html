@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aurelius Digital Group — Luxury Digital Agency</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<!-- LINKED CSS -->
+<link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+<!-- progress bar -->
+<div id="progress-bar" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Aurelius Digital Group home">
+      <div class="logo-mark">⟁</div>
+      <div class="logo-text">
+        <span class="brand-name">AURELIUS</span>
+        <small class="brand-sub">Digital Group</small>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services-preview">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<aside class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#home" onclick="closeMobile()">Home</a></li>
+    <li><a href="#services-preview" onclick="closeMobile()">Services</a></li>
+    <li><a href="#about" onclick="closeMobile()">About</a></li>
+    <li><a href="contact.html" onclick="closeMobile()">Contact</a></li>
+  </ul>
+</aside>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <h1 class="hero-title fade-up">Premium digital design, cybersecurity & cloud engineering.</h1>
+    <p class="hero-sub fade-up">Aurelius Digital Group — elegant products, secure infrastructures, and high-value platforms.</p>
+
+    <div class="hero-ctas fade-up">
+      <a class="btn primary" href="#services-preview">Explore Services</a>
+      <a class="btn ghost" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services-preview" class="section">
+  <div class="container">
+    <h2 class="section-title fade-up">Our Services</h2>
+    <p class="section-lead fade-up">Premium solutions to grow your business.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="bi bi-laptop"></i></div>
+        <h3>Website Design</h3>
+        <p>Modern, responsive websites that convert visitors into clients.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="bi bi-shield-check"></i></div>
+        <h3>Cybersecurity</h3>
+        <p>Advanced protection, auditing, and enterprise-grade monitoring.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="bi bi-cloud-check"></i></div>
+        <h3>Cloud Engineering</h3>
+        <p>Secure, scalable cloud platforms for long-term growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section alt">
+  <div class="container about-inner">
+    <div class="about-left fade-up">
+      <h2>About Aurelius</h2>
+      <p class="lead">We blend high-end design, engineering, and security to build reliable digital systems.</p>
+      <a href="#" class="btn outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" class="section cta">
+  <div class="container fade-up">
+    <h2>Ready to start?</h2>
+    <p>Contact us for a professional proposal.</p>
+    <a class="btn primary" href="#">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <small>© 2025 Aurelius Digital Group. All Rights Reserved.</small>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+  // IntersectionObserver animations
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add("show");
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".fade-up, .fade-left, .fade-right, .fade-soft").forEach(el => io.observe(el));
+
+  // Mobile menu
+  const mobileToggle = document.getElementById("mobileToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  mobileToggle.onclick = () => {
+    mobileMenu.classList.toggle("open");
+  };
+
+  function closeMobile() {
+    mobileMenu.classList.remove("open");
+  }
+
+  // Progress bar
+  const progress = document.getElementById("progress-bar");
+  function updateProgress() {
+    const doc = document.documentElement;
+    const total = doc.scrollHeight - doc.clientHeight;
+    const pct = (doc.scrollTop / total) * 100;
+    progress.style.width = pct + "%";
+  }
+  window.addEventListener("scroll", updateProgress);
+  updateProgress();
+</script>
+
+</body>
+</html>
